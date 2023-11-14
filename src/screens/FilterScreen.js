@@ -41,6 +41,14 @@ function FilterScreen() {
     dispatch(setDistrict(itemValue));
   };
 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      dispatch(setCity(''));
+      dispatch(setDistrict(''));
+    });
+    return unsubscribe;
+  }, [navigation, dispatch]);
+
   return (
     <View style={styles.rootContainer}>
       <Title>Select City</Title>
