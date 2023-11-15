@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar barStyle={'dark-content'} backgroundColor="#ffffff" />
+      <StatusBar barStyle={'dark-content'} backgroundColor="#DC143C" />
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>

@@ -1,5 +1,6 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 
 function PrimaryButton({children, onPress}) {
   return (
@@ -11,7 +12,13 @@ function PrimaryButton({children, onPress}) {
             : styles.buttonInnerContainer
         }
         onPress={onPress}>
-        <Text style={styles.buttonText}>{children}</Text>
+        <LinearGradient
+          colors={['#FF0000', '#DC143C']}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          style={styles.buttonInnerContainer}>
+          <Text style={styles.buttonText}>{children}</Text>
+        </LinearGradient>
       </Pressable>
     </View>
   );
@@ -21,18 +28,17 @@ export default PrimaryButton;
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     borderRadius: 24,
-    margin: 18,
+    margin: 8,
     overflow: 'hidden',
   },
   buttonInnerContainer: {
-    backgroundColor: '#dc143c',
     paddingVertical: 12,
     paddingHorizontal: 24,
-    elevation: 2, //android only
+    borderRadius: 24,
   },
   buttonText: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 18,
     color: 'white',
     textAlign: 'center',
   },
