@@ -1,6 +1,5 @@
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {Alert, Dimensions, StyleSheet, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-// import Title from '../components/ui/Title';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import {useNavigation} from '@react-navigation/native';
 import {Picker} from '@react-native-picker/picker';
@@ -34,7 +33,14 @@ function FilterScreen() {
   }, [selectedCity]);
 
   const nextHandler = () => {
-    navigation.navigate('Pharmacies');
+    if (!selectedCity || !selectedDistrict) {
+      Alert.alert(
+        "You haven't selected a city!",
+        'Try again by selecting the city and district.',
+      );
+    } else {
+      navigation.navigate('Pharmacies');
+    }
   };
   const onCityChange = itemValue => {
     dispatch(setCity(itemValue));
@@ -56,7 +62,6 @@ function FilterScreen() {
       <WavyHeader customStyles={styles.svgCurve} />
       <Title>Select a City</Title>
       <View style={styles.rootContainer}>
-        {/* <Title>Select City</Title> */}
         <View style={styles.pickerWrapper}>
           <Picker
             selectedValue={selectedCity}
