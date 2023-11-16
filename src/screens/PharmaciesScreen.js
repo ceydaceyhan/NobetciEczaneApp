@@ -1,12 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useMemo} from 'react';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {selectFilter} from '../store/filtersSlice';
 import {PharmaciesList} from '../components/PharmaciesList';
 
 function PharmaciesScreen({navigation}) {
   const {selectedCity, selectedDistrict} = useSelector(selectFilter);
-  // const [pharmacies, setPharmacies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const formatText = text => {
     return text
@@ -22,23 +22,6 @@ function PharmaciesScreen({navigation}) {
     [selectedDistrict],
   );
 
-  // const fetchPharmacies = useCallback(async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://www.nosyapi.com/apiv2/pharmacyLink?city=${selectedCity.toLowerCase()}&county=${selectedDistrict.toLowerCase()}&apikey=iZ9ViN6e1145QFPjd0DHSdvuvwoyEHYSLBnMEMWprkoXIZuP2Ypdk4z89KkT`,
-  //     );
-  //     setPharmacies(response.data);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error('Eczaneler alınırken bir hata oluştu:', error);
-  //   }
-  // }, [selectedCity, selectedDistrict]);
-  // useEffect(() => {
-  //   if (selectedCity && selectedDistrict) {
-  //     fetchPharmacies();
-  //   }
-  // }, [selectedCity, selectedDistrict, fetchPharmacies]);
-
   const headerTitleComponent = useMemo(
     () => (
       <View>
@@ -50,6 +33,23 @@ function PharmaciesScreen({navigation}) {
     ),
     [formattedCity, formattedDistrict],
   );
+  useEffect(() => {
+    // Simulate an asynchronous operation, like fetching data
+    const fetchData = async () => {
+      try {
+        // Your asynchronous code here
+
+        // Simulate a delay of 2 seconds
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Set loading to false when the operation is done
+      }
+    };
+
+    fetchData();
+  }, []);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -59,31 +59,33 @@ function PharmaciesScreen({navigation}) {
     });
   }, [navigation, headerTitleComponent]);
 
-  // const renderItem = ({item}) => {
-  //   console.log('Rendered Item:', item);
-  //   return (
-  //     <View style={styles.pharmacyItem}>
-  //       <Text>Eczane Adı: {item.EczaneAdi}</Text>
-  //       <Text>Adres: {item.Adresi}</Text>
-  //       <Text>Telefon: {item.Telefon}</Text>
-  //     </View>
-  //   );
-  // };
-
-  return <PharmaciesList />;
+  return (
+    <View style={styles.container}>
+      {loading ? (
+        <ActivityIndicator
+          size="large"
+          color="#FF0000"
+          style={styles.indicator}
+        />
+      ) : (
+        <PharmaciesList />
+      )}
+    </View>
+  );
 }
 
 export default PharmaciesScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   headerTitle: {
     marginTop: 10,
     color: 'black',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   headerSubtitle: {
@@ -95,5 +97,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#000',
+  },
+  indicator: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

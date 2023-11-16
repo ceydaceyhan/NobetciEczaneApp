@@ -12,7 +12,7 @@ function WavyHeader({customStyles}) {
           viewBox="0 0 1440 320"
           style={styles.svg}>
           <Path
-            fill="#DC143C"
+            fill="#dc142b"
             d="M0,288L60,288C120,288,240,288,360,250.7C480,213,600,139,720,144C840,149,960,235,1080,261.3C1200,288,1320,256,1380,240L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
           />
         </Svg>
@@ -24,7 +24,7 @@ export default WavyHeader;
 
 const styles = StyleSheet.create({
   wavy: {
-    backgroundColor: '#DC143C',
+    backgroundColor: '#dc142b',
     height: 160,
   },
   svg: {

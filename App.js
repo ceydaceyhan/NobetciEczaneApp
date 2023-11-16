@@ -28,6 +28,7 @@ export default function App() {
               component={FilterScreen}
               options={{
                 headerShown: false,
+                statusBarStyle: 'light',
               }}
             />
             <Stack.Screen
@@ -36,6 +37,8 @@ export default function App() {
               options={{
                 title: 'Nöbetçi Eczaneler',
                 headerTitleAlign: 'center',
+                statusBarColor: 'white',
+                statusBarStyle: 'dark',
               }}
             />
           </Stack.Navigator>
