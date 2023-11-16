@@ -1,8 +1,13 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View, Linking} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
-function PrimaryButton({children, onPress}) {
+function CallButton({children, phoneNumber}) {
+  const handlePress = () => {
+    const phoneUrl = `tel:${phoneNumber}`;
+    Linking.openURL(phoneUrl);
+  };
+
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
@@ -11,7 +16,7 @@ function PrimaryButton({children, onPress}) {
             ? [styles.buttonInnerContainer, styles.pressed]
             : styles.buttonInnerContainer
         }
-        onPress={onPress}>
+        onPress={handlePress}>
         <LinearGradient
           colors={['#FF0000', '#DC143C']}
           start={{x: 0, y: 0}}
@@ -23,21 +28,21 @@ function PrimaryButton({children, onPress}) {
     </View>
   );
 }
-export default PrimaryButton;
+export default CallButton;
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {
-    margin: 12,
+    margin: 8,
     overflow: 'hidden',
   },
   buttonInnerContainer: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
     borderRadius: 24,
   },
   buttonText: {
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 14,
     color: 'white',
     textAlign: 'center',
   },

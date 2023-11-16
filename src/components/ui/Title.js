@@ -8,7 +8,7 @@ export default Title;
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
