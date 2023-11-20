@@ -37,9 +37,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleText: {
+    textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
+    borderBottomWidth: 1,
   },
   addressText: {
     marginTop: 4,

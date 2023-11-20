@@ -50,11 +50,11 @@ function FilterScreen() {
   };
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
+    const unpicked = navigation.addListener('focus', () => {
       dispatch(setCity(''));
       dispatch(setDistrict(''));
     });
-    return unsubscribe;
+    return unpicked;
   }, [navigation, dispatch]);
 
   return (
