@@ -34,13 +34,17 @@ function PharmaciesScreen({navigation}) {
     [formattedCity, formattedDistrict],
   );
   useEffect(() => {
+    // Simulate an asynchronous operation, like fetching data
     const fetchData = async () => {
       try {
+        // Your asynchronous code here
+
+        // Simulate a delay of 2 seconds
         await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        setLoading(false);
+        setLoading(false); // Set loading to false when the operation is done
       }
     };
 

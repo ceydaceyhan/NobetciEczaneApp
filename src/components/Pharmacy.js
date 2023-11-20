@@ -13,8 +13,6 @@ export const Pharmacy = ({data}) => {
       </View>
       <View style={styles.downContainer}>
         <Text style={styles.phoneText}>Phone: {data.Telefon}</Text>
-      </View>
-      <View>
         <CallButton phoneNumber={data.Telefon}>CALL</CallButton>
       </View>
     </View>
@@ -24,8 +22,8 @@ const styles = StyleSheet.create({
   rootContainer: {
     marginTop: 10,
     height: 160,
-    padding: 3,
-    margin: 4,
+    padding: 4,
+    margin: 5,
     backgroundColor: '#dddddd',
     flexDirection: 'column',
     borderRadius: 8,
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   addressText: {
-    marginTop: 4,
+    marginTop: 6,
     fontSize: 14,
     color: 'black',
   },
