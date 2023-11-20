@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     borderBottomWidth: 1,
+    borderColor: '#636160',
   },
   addressText: {
     marginTop: 4,
