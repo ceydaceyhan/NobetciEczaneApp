@@ -32,11 +32,11 @@ export default CallButton;
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {
-    margin: 8,
+    margin: 6,
     overflow: 'hidden',
   },
   buttonInnerContainer: {
-    paddingVertical: 8,
+    paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 24,
   },
